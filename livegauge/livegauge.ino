@@ -12,11 +12,14 @@
 U8G2_SH1106_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);
 DHT dht(DHTPIN, DHTTYPE);
 
+
+// delcare global variables
 float temp = 0;
 int change = 0;
 float ratio = 0;
 float pwm =0;
 
+//serial monitor debug on 9600 baud
 void setup(void) {
   u8g2.begin();
   Serial.begin(9600);
@@ -25,6 +28,7 @@ void setup(void) {
 }
 
 //clears screen and draws white background with black arc and tik marks
+// I think my needle is offcenter or crooked. tweak these values to get it looking right
 void drawBackground(){
   u8g2.clearBuffer();
   u8g2.setDrawColor(1);
@@ -38,6 +42,7 @@ void drawBackground(){
 }
 
 // draws F functions draw the degrees farenheit in the middle as well as the right and left values
+// right now it's set to 0-100 but you can edit the range to display however far you want
 void drawF80_100(){
   u8g2.setDrawColor(0);
   u8g2.setFont(u8g2_font_unifont_t_symbols);
@@ -85,7 +90,7 @@ void drawF0_20(){
 }
 
 //function to decide what temp values to display
-//uses change value to determine if screen needs to be redrawn
+//uses change variable to determine if screen needs to be redrawn
 void displayTemp(){
   if (temp >=80 and temp <= 100){
     if(change != 0){
@@ -124,11 +129,11 @@ void displayTemp(){
   }
 }
 
+// ------------NEEDLE CALIBRATION IN THIS SHIT----------------
 //function to calculate needle value from temp
 // calculates ratio which is the percentage of the needle. 1.00 is full
 void temp2Needle(){
-  // with no resistor, 8.5 is start, 17 is half, 23.5 is max
-  //24.74
+  // with no resistor, pwm values for my needle is 8.5=0%, 17 = 50%, 23.5 =100%
   if (change == 0){
     ratio = ((float)temp - 80.0)/20.0;
   }
@@ -146,12 +151,12 @@ void temp2Needle(){
   }
   int intRatio = 100 * ratio;
   if (intRatio >= 50){
-    pwm = map(intRatio, 50, 95, 17, 23.5);
+    pwm = map(intRatio, 50, 95, 17, 23.5); // to calibrate your needle change the last 2 numbers in this section- change 17 to your 50% pwm value and 23.5 to your 100%pwm value
   }
   if (intRatio < 50){
-    pwm = map(intRatio, 0, 50, 8.5, 17);
+    pwm = map(intRatio, 0, 50, 8.5, 17); // change 8.5 to your 0% pwm value and 17 to your 50% pwm value
   }
-  analogWrite(4,pwm);
+  analogWrite(4,pwm); // positive side of the needle on GPIO4
 
 }
 
@@ -169,5 +174,5 @@ void loop(void) {
   Serial.println(ratio);
   Serial.println(pwm);
   Serial.println("-----");
-  delay(1000);
+  delay(1000); // updates every second. my dht module hates anything faster
 }
