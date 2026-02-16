@@ -4,8 +4,8 @@ An analog needle meter with OLED back panel. It is set up to display the tempera
 ![LiveGauge prototype](IMG_20260215_030720962_HDR.jpg)
 
 ## parts
-- ESP32
-- Analog voltmeter (mine was 5V but I don't think it matters if you take the resistor off the back)
+- ESP32 (any microcontroller with I2C and PWM)
+- Analog voltmeter (mine was 5V but I don't think it matters since we remove resistor from back)
 - 1.54" 128x64 I2C OLED display
 - DHT11 temperature sensor
 - Jumper wires
