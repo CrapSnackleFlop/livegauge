@@ -1,5 +1,5 @@
 # livegauge
-An analog needle meter with OLED back panel. This can be used to display anything you want at a glance. It is set up to display the temperature using a DHT11 module all running on an esp32
+An analog needle meter with OLED back panel. It is set up to display the temperature using a DHT11 module running on an esp32. This can be used to display anything. Temperature, humidity, wire it to your PC and have it show GPU / CPU usage. Use api to call weather or stock prices, etc. Make it display ALL of these things and give it a button to swap between them on the fly!
 
 ## parts
 - ESP32
