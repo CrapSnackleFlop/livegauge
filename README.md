@@ -28,3 +28,4 @@ This project turns a normal 5V analog voltmeter into a dynamic display that can 
 - Right now it includes a function to change the value range depending on what the needle is displaying.
 
 ![Analog Voltmeter](voltmeter.jpg)
+[View 3D Model](lg_mounting_plate.stl)
