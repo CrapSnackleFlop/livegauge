@@ -23,7 +23,7 @@ This project turns a normal 5V analog voltmeter into a dynamic display that can 
 
 ## notes
 - The code isn't pretty but it works.
-- The semicircle drawing and needle calibration was made specific to my meter. The 3d print was a bit off so it's offcenter / not perfect. There are comments on the code section for tweaking the arc as well as the needle./
+- The semicircle drawing and needle calibration was made specific to my meter. My 3d print was offcenter / not perfect so there are comments on the code section for tweaking the arc as well as calibrating the needle.
 - For mounting everything on the 3d printed plate, I reused the screws from the analog voltmeter.
 - Right now it includes a function to change the value range depending on what the needle is displaying.
 
