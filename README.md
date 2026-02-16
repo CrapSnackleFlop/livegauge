@@ -22,6 +22,7 @@ An analog needle meter with OLED back panel. It is set up to display the tempera
 - analog meter - -- GND 
 
 ## notes
-The code isn't pretty but it works.
-The semicircle drawing and needle calibration was made specific to my meter. The 3d print was a bit off so it's offcenter / not perfect. There are comments on the code section for tweaking the arc as well as the needle./
-For mounting everything on the 3d printed plate, I reused the screws from the analog voltmeter.
+- The code isn't pretty but it works.
+- The semicircle drawing and needle calibration was made specific to my meter. The 3d print was a bit off so it's offcenter / not perfect. There are comments on the code section for tweaking the arc as well as the needle./
+- For mounting everything on the 3d printed plate, I reused the screws from the analog voltmeter.
+- Right now it includes a function to change the value range depending on what the needle is displaying.
